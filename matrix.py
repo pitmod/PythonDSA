@@ -15,9 +15,19 @@ print('# Access')
 print(m[0])
 print(m[1][1])
 
-# Add row
+# Add row at the end (0 defines an axis x so row)
 m_r = append(m,[['Avg',12,15,22,22]],0)
 print(m_r)
+print(20*'-')
+
+m_z = append(m,[['A'],['B'],['C'],['D']],1)
+print(m_z)
+print(20*'-')
+
+
+# Add column
+m_c = insert(m,[1],[[1],[2],[3],[4]],1)
+print(m_c)
 print(20*'-')
 
 
