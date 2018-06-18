@@ -20,7 +20,8 @@ m_r = append(m,[['Avg',12,15,22,22]],0)
 print(m_r)
 print(20*'-')
 
-m_z = append(m,[['A'],['B'],['C'],['D']],1)
+#m_z = append(m,[['A'],['B'],['C'],['D']],1)
+m_z = append(m,[['A','B','C','D']],1)
 print(m_z)
 print(20*'-')
 
