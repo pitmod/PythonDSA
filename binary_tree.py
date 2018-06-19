@@ -67,7 +67,39 @@ print(r.getRightChild().getRightChild().getRootVal())
 
 
 
+def preorder(tree):
+    if tree:
+        print(tree.getRootVal())
+        preorder(tree.getLeftChild())
+        preorder(tree.getRightChild())
 
 
-#r.getRightChild().setRootVal('hello')
-#print(r.getRightChild().getRootVal())
+
+def postorder(tree):
+    if tree != None:
+        postorder(tree.getLeftChild())
+        postorder(tree.getRightChild())
+        print(tree.getRootVal())
+
+
+
+def inorder(tree):
+  if tree != None:
+      inorder(tree.getLeftChild())
+      print(tree.getRootVal())
+      inorder(tree.getRightChild())
+
+print(40*"#")
+preorder(r)
+
+
+print(40*"#")
+postorder(r)
+
+
+print(40*"#")
+inorder(r)
+
+
+
+
