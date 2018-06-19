@@ -1,70 +1,99 @@
 #!/usr/bin/python3
 """Singly Linked List"""
 
+
 class Node:
-    def __init__(self, dataval=None):
-        self.dataval = dataval
-        self.nextval = None
+    def __init__(self,data):
+        self.data = data
+        self.next = None
 
 class SLinkedList:
     def __init__(self):
-        self.headval = None
-
-    def AtBegining(self, newdata):
-        NewNode = Node(newdata)
-        NewNode.nextval = self.headval
-        self.headval = NewNode
-
-    def AtEnd(self, newdata):
-        NewNode = Node(newdata)
-        if self.headval is None:
-            self.headval = NewNode
-            return
-        laste = self.headval
-        while (laste.nextval):
-            laste = laste.nextval
-        laste.nextval = NewNode
+        self.head=None
 
     def listprint(self):
-        printval = self.headval
-        while printval is not None:
-            print(printval.dataval)
-            printval = printval.nextval
+        value = self.head
+        while value:
+            print(value.data)
+            value = value.next
 
-    def RemoveNode(self, Removekey):
-        HeadVal = self.headval
+    def addbeg(self,data):
+        newnode = Node(data)
+        newnode.next = self.head
+        self.head = newnode
 
-        if (HeadVal is not None):
-            if (HeadVal.dataval == Removekey):
-                self.headval = HeadVal.next
-                HeadVal = None
-                return
-
-        while (HeadVal is not None):
-            if HeadVal.dataval == Removekey:
-                break
-            prev = HeadVal
-            HeadVal = HeadVal.nextval
-
-        if (HeadVal == None):
+    def addend(self,data):
+        value = self.head
+        newnode = Node(data)
+        if value == None:
+            self.head = newnode
             return
+        while value.next:
+            value = value.next
+        value.next = newnode
 
-        prev.next = HeadVal.nextval
+    def size(self):
+        value = self.head
+        counter = 0
+        while value:
+            counter += 1
+            value = value.next
+        return counter
 
-        HeadVal = None
+    def search(self,data):
+        value = self.head
+        searchval = data
+        while value:
+            if value.data == searchval:
+                return True
+            value = value.next
+        return False
+
+    def remove(self,item):
+        current = self.head
+        previous = None
+        found = False
+        while not found:
+            if current.data == item:
+                found = True
+            else:
+                previous = current
+                current = current.next
+        if previous == None:
+            self.head = current.next
+        else:
+            previous.next = current.next
 
 
 
-list = SLinkedList()
-list.headval = Node("Mon")
-e2 = Node("Tue")
-e3 = Node("Wed")
+d1 = Node("Mon")
+d2 = Node("Tue")
+d3 = Node("Wed")
 
-list.headval.nextval = e2
-e2.nextval = e3
+d1.next = d2
+d2.next = d3
 
-list.AtEnd("Thu")
-list.AtBegining("Sun")
-list.RemoveNode("Mon")
-list.listprint()
+list1 = SLinkedList()
+list1.head = d1
 
+list1.listprint()
+print(20*'#')
+
+
+list1.addbeg("Sun")
+list1.listprint()
+print(20*'#')
+
+list1.addend("Thu")
+list1.listprint()
+print(20*'#')
+
+print(list1.size())
+print(20*'#')
+
+print(list1.search("Mon"))
+print(20*'#')
+
+list1.remove("Thu")
+list1.listprint()
+print(20*'#')
