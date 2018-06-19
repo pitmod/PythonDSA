@@ -6,22 +6,16 @@ class DayNames:
         self.dataval = dataval
         self.nextval = None
 
-e1 = DayNames('Mon')
-e2 = DayNames('Tue')
-e3 = DayNames('Wed')
-e4 = DayNames('Thu')
+d1 = DayNames('Mon')
+d2 = DayNames('Tue')
+d3 = DayNames('Wed')
+
+d1.nextval = d2
+d2.nextval = d3
 
 
+thisval = d1
 
-e1.nextval = e2
-e2.nextval = e3
-e3.nextval = e4
-
-thisvalue = e1
-
-while thisvalue:
-    print(thisvalue.dataval)
-    thisvalue = thisvalue.nextval
-
-
-
+while thisval:
+    print(thisval.dataval)
+    thisval = thisval.nextval
